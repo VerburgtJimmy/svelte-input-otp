@@ -1,11 +1,11 @@
-# Svelte-Otp-Input
+# Svelte-Input-Otp
 
 A unstyled & accessible OTP component for svelte
 
 ## Installation
 
 ```bash
-npm install @jimmyverburgt/svelte-otp-input
+npm install @jimmyverburgt/svelte-input-otp
 ```
 
 ## Implementation
@@ -15,7 +15,7 @@ This is using tailwind css and using the theme system from shadcn/ui
 
 ```svelte
 <script lang="ts">
-	import { OTPInput, OTPRoot } from '@jimmyverburgt/svelt-otp-input';
+	import { OTPInput, OTPRoot } from '@jimmyverburgt/svelte-input-otp';
 	import { Minus } from 'lucide-svelte';
 
 	let otpref: any;
