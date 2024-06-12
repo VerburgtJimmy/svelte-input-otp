@@ -1,5 +1,6 @@
 <script>
-	import { GithubIcon, Twitter } from 'lucide-svelte';
+	import Github from 'lucide-svelte/icons/github';
+	import Twitter from 'lucide-svelte/icons/twitter';
 	import DarkmodeSwitch from './darkmode-switch/darkmode-switch.svelte';
 	import Button from './ui/button/button.svelte';
 </script>
@@ -12,7 +13,7 @@
 			<nav class="flex items-center">
 				<Button variant="ghost" href="" target="_blank" rel="noreferrer">
 					<div>
-						<GithubIcon className="h-4 w-4" />
+						<Github className="h-4 w-4" />
 						<span class="sr-only">GitHub</span>
 					</div>
 				</Button>

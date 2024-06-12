@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Copy } from 'lucide-svelte';
+	import Copy from 'lucide-svelte/icons/copy';
 	import { mode } from 'mode-watcher';
 	import rehypePrettyCode from 'rehype-pretty-code';
 	import rehypeStringify from 'rehype-stringify';

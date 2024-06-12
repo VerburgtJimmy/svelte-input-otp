@@ -16,7 +16,7 @@ This is using tailwind css and using the theme system from shadcn/ui
 ```svelte
 <script lang="ts">
 	import { OTPInput, OTPRoot } from '@jimmyverburgt/svelte-input-otp';
-	import { Minus } from 'lucide-svelte';
+	import Minus from 'lucide-svelte/icons/minus';
 
 	let otpref: any;
 

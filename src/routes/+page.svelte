@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { OTPInput, OTPRoot } from '$lib/index.js';
-	import { Minus } from 'lucide-svelte';
+	import Minus from 'lucide-svelte/icons/minus';
 	import Confetti from 'svelte-confetti';
 	import CodeBlock from '../components/code-block/code-block.svelte';
 	import CopyButton from '../components/copy-button/copy-button.svelte';
