@@ -1,83 +1,189 @@
-# input-otp-svelte
+# Svelte-Otp-Input
 
-One time passcode Input. Accessible &amp; unstyled.
+A unstyled & accessible OTP component for svelte
+
+## Installation
+
+```bash
+npm install @jimmyverburgt/svelte-otp-input
+```
 
 ## Implementation
 
-For now since the package is not yet published you need to just copy the files to your project or use npm link to use it locally.
+An example of the code used to create the OTP component you can see on the website.
+This is using tailwind css and using the theme system from shadcn/ui
 
-If that is done than you can use the component this way with styles from the react shadcn/ui Input otp component:
-
-```
+```svelte
 <script lang="ts">
-	// Imports
-	import { Input, Root, Separator } from '../../../../../node_modules/svelte-input-otp/src';
+	import { OTPInput, OTPRoot } from '@jimmyverburgt/svelt-otp-input';
+	import { Minus } from 'lucide-svelte';
 
-    // Callback function for when the component is filled
-    function handleOtpComplete(value: string) {
-		console.log('OTP Complete:', value);
+	let otpref: any;
+
+	// Set start value
+	let value = '12';
+
+	function handleOtpComplete(otp: string) {
+		console.log('OTP Complete:', otp);
+		// Reset value
+		value = '';
 	}
 
-    // Full otp string
-	let otp = '';
-
-    // Called on every input
 	function handleOtpChange(event: { detail: string }) {
-		otp = event.detail;
-		console.log('OTP changed:', otp);
+		console.log('OTP changed:', value);
 	}
 </script>
 
-// Make sure to for now group your otp inputs that are together in a div like you see below.
-<Root
-	length={6}
-	autoFocus={true}
+<OTPRoot
+	bind:this={otpref}
+	maxLength={6}
 	on:change={handleOtpChange}
-	value={otp}
-	disabled={false}
+	bind:value
+	autoFocus={true}
+	onComplete={handleOtpComplete}
 	className="flex items-center gap-2"
 >
 	<div class="flex items-center">
-		<Input
+		<OTPInput
 			index={0}
-			className="relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 		/>
-		<Input
+		<OTPInput
 			index={1}
-			className="relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 		/>
-	</div>
-
-	<Separator separator="-" />
-	<div class="flex items-center">
-		<Input
+		<OTPInput
 			index={2}
-			className="relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md"
-			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
-		/>
-		<Input
-			index={3}
-			className="relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 		/>
 	</div>
-	<Separator separator=" " />
+	<div class="mx-1">
+		<Minus />
+	</div>
 	<div class="flex items-center">
-		<Input
-			index={4}
-			className="relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+		<OTPInput
+			index={3}
+			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 		/>
-		<Input
+		<OTPInput
+			index={4}
+			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
+		/>
+		<OTPInput
 			index={5}
-			className="relative flex h-10 w-10 items-center justify-center border-y border-r border-input text-sm transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 		/>
 	</div>
-</Root>
+</OTPRoot>
+```
 
+## API Reference
+
+### OTPRoot
+
+The root container. Define settings for the input via props.
+
+```ts
+export type rootProps = {
+	/**
+	 * The input otp value from the hidden input
+	 */
+	value?: string;
+
+	/**
+	 * The input name value. If the OTP component is placed inside a form element. The value can be retrieved using this name
+	 *
+	 * @default otp
+	 */
+	inputName?: string;
+
+	/**
+	 * The max lenght which is set to the hidden input. Make sure this is the same as the number of input slots.
+	 */
+	maxLength?: number;
+
+	/**
+	 * Set if the entire input otp component needs to be disabled
+	 *
+	 * @default false
+	 */
+	disabled?: boolean;
+
+	/**
+	 * Whether you want to focus the input on mount
+	 *
+	 * @default false
+	 */
+	autoFocus?: boolean;
+
+	/**
+	 * Virtual keyboard appearance on mobile
+	 *
+	 * @default numeric
+	 */
+	inputType?: 'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url';
+
+	/**
+	 *  Where is the text located within the input
+	 *  Affects click-holding or long-press behavior
+	 *
+	 * @default left
+	 */
+	textAlign?: 'left' | 'center' | 'right';
+
+	/**
+	 *  Set the regexpattern for allowing only digits, only chars, or both
+	 *
+	 * @default digits
+	 */
+	pattern?: 'digits' | 'chars' | 'digitsAndChars';
+
+	/**
+	 * The function that is called when the input otp is correctly filled in.
+	 * @param args
+	 * @returns
+	 */
+	onComplete?: (...args: any[]) => unknown;
+
+	/**
+	 * @todo Add this functionality
+	 */
+	// pushPasswordManagerStrategy?: "increase-width" | "none";
+
+	/**
+	 * Insert your classes for the component here.
+	 */
+	className?: string;
+};
+```
+
+### OTPInput
+
+The input container. Define settings for the individual inputs via props.
+
+```ts
+export type inputProps = {
+	/**
+	 * Indicates the index of the input slot
+	 */
+	index: number;
+
+	/**
+	 * Insert your classes for the component here.
+	 */
+	className?: string;
+
+	/**
+	 * Insert your classes for the component here when the component is focussed.
+	 */
+	focusClassName?: string;
+};
 ```
 
 This is still a work in progress but input is welcome. Thanks
