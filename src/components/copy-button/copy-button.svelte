@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Button } from 'components/ui/button/index.js';
 	import { Check, Copy } from 'lucide-svelte';
+	import { Button } from '../ui/button/index.js';
 
 	let code = 'npm install @jimmyverburgt/svelte-otp-input';
 	let copied = false;

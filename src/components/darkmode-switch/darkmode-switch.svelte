@@ -3,7 +3,7 @@
 	import Sun from 'lucide-svelte/icons/sun';
 
 	import { resetMode, setMode } from 'mode-watcher';
-	import { Button } from '..//ui/button/index.js';
+	import { Button } from '../ui/button/index.js';
 	import * as DropdownMenu from '../ui/dropdown-menu/index.js';
 </script>
 

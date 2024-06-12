@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { Button } from 'components/ui/button/index.js';
 	import { Copy } from 'lucide-svelte';
 	import { mode } from 'mode-watcher';
 	import rehypePrettyCode from 'rehype-pretty-code';
@@ -8,6 +7,7 @@
 	import remarkRehype from 'remark-rehype';
 	import { onMount } from 'svelte';
 	import { unified } from 'unified';
+	import { Button } from '../ui/button/index.js';
 	function copyToClipboardWithMeta(value: string) {
 		window && window.isSecureContext && navigator.clipboard.writeText(value);
 	}

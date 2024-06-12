@@ -11,7 +11,12 @@
 				guilhermerodz
 			</a>
 			. Built by{' '}
-			<a href="" target="_blank" rel="noreferrer" class="font-medium underline underline-offset-4">
+			<a
+				href="https://jimmyverburgt.com"
+				target="_blank"
+				rel="noreferrer"
+				class="font-medium underline underline-offset-4"
+			>
 				jimmyverburgt
 			</a>
 			. The source code is available on{' '}
