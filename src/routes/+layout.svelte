@@ -1,6 +1,5 @@
 <script>
 	import { ModeWatcher } from 'mode-watcher';
-	import { Confetti } from 'svelte-confetti';
 	import '../app.css';
 	import Footer from '../components/footer.svelte';
 	import Header from '../components/header.svelte';
