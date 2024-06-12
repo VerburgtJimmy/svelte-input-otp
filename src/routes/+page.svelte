@@ -54,7 +54,7 @@
 <div class="container relative flex flex-col justify-center items-center">
 	<div class="mx-auto max-w-2xl pt-64 text-center">
 		<div class="relative flex flex-col">
-			<h1 class="relative mb-4 text-7xl font-semibold">Svelte-Otp-Input</h1>
+			<h1 class="relative mb-4 text-7xl font-semibold">Svelte-Input-Otp</h1>
 			<p class="text-xl text-gray-600">A unstyled & accessible OTP component for svelte</p>
 		</div>
 	</div>

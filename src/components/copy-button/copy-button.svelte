@@ -3,7 +3,7 @@
 	import Copy from 'lucide-svelte/icons/copy';
 	import { Button } from '../ui/button/index.js';
 
-	let code = 'npm install @jimmyverburgt/svelte-otp-input';
+	let code = 'npm install @jimmyverburgt/svelte-input-otp';
 	let copied = false;
 	function copyToClipboardWithMeta(value: string) {
 		window && window.isSecureContext && navigator.clipboard.writeText(value);

@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"author": "Jimmy Verburgt <hey@jimmyverburgt.com>",
 	"description": "One time passcode Input for svelte. Accessible & unstyled.",
-	"homepage": "svelte-otp-input.jimmyverburgt.com",
+	"homepage": "svelte-input-otp.jimmyverburgt.com",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
