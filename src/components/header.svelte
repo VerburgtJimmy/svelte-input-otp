@@ -11,13 +11,18 @@
 	<div class="container flex h-14 max-w-screen-2xl items-center">
 		<div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
 			<nav class="flex items-center">
-				<Button variant="ghost" href="" target="_blank" rel="noreferrer">
+				<Button
+					variant="ghost"
+					href="https://github.com/VerburgtJimmy/svelte-input-otp"
+					target="_blank"
+					rel="noreferrer"
+				>
 					<div>
 						<Github className="h-4 w-4" />
 						<span class="sr-only">GitHub</span>
 					</div>
 				</Button>
-				<Button variant="ghost" href="" target="_blank" rel="noreferrer">
+				<Button variant="ghost" href="https://x.com/jimmyverburgt" target="_blank" rel="noreferrer">
 					<div>
 						<Twitter class="h-4 w-4 fill-current" />
 						<span class="sr-only">Twitter</span>
