@@ -18,8 +18,6 @@
 		if (blup == '123456') {
 			correct = true;
 		}
-
-		value = '';
 	}
 
 	function handleOtpChange(event: { detail: string }) {
@@ -66,6 +64,7 @@
 			bind:value
 			autoFocus={true}
 			onComplete={handleOtpComplete}
+			pattern="digits"
 			className="flex items-center gap-2"
 		>
 			<div class="flex items-center">

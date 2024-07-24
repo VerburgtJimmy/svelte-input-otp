@@ -78,7 +78,8 @@
 		if (disabled) return;
 		const pasteData = event.clipboardData?.getData('text') || '';
 		const otp = pasteData.slice(0, maxLength);
-		const regex = new RegExp(getPattern());
+		const regex = getPattern();
+		console.log(regex.test(otp));
 		if (regex.test(otp)) {
 			updateOtpArray(otp);
 		}
