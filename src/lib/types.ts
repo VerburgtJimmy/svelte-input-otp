@@ -35,15 +35,7 @@ export type rootProps = {
 	 *
 	 * @default numeric
 	 */
-	inputType?: 'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url';
-
-	/**
-	 *  Where is the text located within the input
-	 *  Affects click-holding or long-press behavior
-	 *
-	 * @default left
-	 */
-	textAlign?: 'left' | 'center' | 'right';
+	inputMode?: 'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url';
 
 	/**
 	 *  Set the regexpattern for allowing only digits, only chars, or both
@@ -68,6 +60,11 @@ export type rootProps = {
 	 * Insert your classes for the component here.
 	 */
 	className?: string;
+
+	/**
+	 * Add support for screen reader to this control
+	 */
+	ariaLabel?: string;
 };
 
 export type inputProps = {
