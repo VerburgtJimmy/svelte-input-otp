@@ -16,12 +16,12 @@
 	export let value: $$Props['value'] = '';
 	export let inputName: $$Props['inputName'] = 'otp';
 	export let onComplete: $$Props['onComplete'] = () => {};
-	export let inputType: $$Props['inputType'] = 'numeric';
+	export let inputMode: $$Props['inputMode'] = 'numeric';
 	export let pattern: $$Props['pattern'] = 'digits';
-	export let textAlign: $$Props['textAlign'] = 'left';
 	export let className: $$Props['className'] = '';
 	export let disabled: $$Props['disabled'] = false;
 	export let autoFocus: $$Props['autoFocus'] = false;
+	export let ariaLabel: $$Props['ariaLabel'] = '';
 
 	// Local variables
 	let ref: HTMLInputElement;
@@ -117,7 +117,6 @@
 	function focusInvisibleInput() {
 		if (disabled) return;
 
-		ref!.focus();
 		// Set focusedIndex to the first empty input or to the end of the filled inputs
 		otpArray.update((currentOtpArray: any) => {
 			const nextIndex = currentOtpArray.findIndex((value: string) => value === '');
@@ -131,43 +130,59 @@
 		if (disabled || !autoFocus) {
 			focusedIndex.set(-1);
 		} else {
+			ref!.focus();
 			focusInvisibleInput();
 		}
 	});
 </script>
 
-<div
-	class={`${className} ${disabled ? 'disabled-input' : ''}`}
-	on:click={focusInvisibleInput}
-	on:keydown={focusInvisibleInput}
-	role="button"
-	aria-pressed="false"
-	tabindex="0"
->
+<div class={`otp-root ${className} ${disabled ? 'disabled-input' : ''}`}>
 	<slot />
 	<!-- svelte-ignore a11y-autocomplete-valid -->
 	<input
 		name={inputName}
 		class="invisible-input"
 		bind:this={ref}
-		type={inputType}
+		inputmode={inputMode}
 		autocomplete="one-timecode"
 		{value}
+		on:focus={focusInvisibleInput}
 		on:blur={handleBlur}
 		on:paste={handlePaste}
 		on:input={handleInput}
 		on:keydown={handleKeyDown}
 		maxlength={maxLength}
+		aria-label={ariaLabel}
 		{disabled}
-		style={textAlign}
 	/>
 </div>
 
 <style>
+	.otp-root {
+		position: relative;
+		cursor: text;
+		user-select: none;
+		pointer-events: none;
+	}
+
 	.invisible-input {
 		position: absolute;
-		opacity: 0;
-		pointer-events: none;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 1; /* Mandatory for iOS hold-paste */
+		color: transparent;
+		pointer-events: all;
+		background: transparent;
+		caret-color: transparent;
+		border: 0 solid transparent;
+		outline: 0 solid transparent;
+		box-shadow: none;
+		letter-spacing: -0.5em;
+		font-size: 80px;
+		font-family: monospace;
+		font-variant-numeric: tabular-nums;
+		user-select: none; /* OTP Input selection is not supported */
 	}
 
 	.disabled-input {
