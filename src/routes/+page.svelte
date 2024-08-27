@@ -7,22 +7,19 @@
 	import Button from '../components/ui/button/button.svelte';
 	import { code } from './code.js';
 
-	let otpref: any;
 	let correct: boolean = false;
-	// blup
-	let otpValue: string = '';
+
 	let value = '12';
 
-	function handleOtpComplete(blup: string) {
-		console.log('OTP Complete:', blup);
-		if (blup == '123456') {
+	function handleOtpComplete(code: string) {
+		console.log('OTP Complete:', code);
+		if (code == '123456') {
 			correct = true;
 		}
 	}
 
 	function handleOtpChange(event: { detail: string }) {
-		console.log('change :' + event.detail);
-		console.log('OTP changed:', value);
+		console.log('OTP changed:', event.detail);
 	}
 </script>
 
@@ -58,7 +55,6 @@
 	</div>
 	<div class="my-10">
 		<OTPRoot
-			bind:this={otpref}
 			maxLength={6}
 			on:change={handleOtpChange}
 			bind:value

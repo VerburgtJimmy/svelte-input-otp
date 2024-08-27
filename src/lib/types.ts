@@ -57,7 +57,7 @@ export type rootProps = {
 	 * @param args
 	 * @returns
 	 */
-	onComplete?: (...args: any[]) => unknown;
+	onComplete?: (code: string) => unknown;
 
 	/**
 	 * @todo Add this functionality

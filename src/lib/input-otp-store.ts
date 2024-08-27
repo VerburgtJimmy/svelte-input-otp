@@ -1,5 +1,5 @@
 // src/otpStore.js
 import { writable } from 'svelte/store';
 
-export let otpArray = writable(['']);
-export let focusedIndex = writable(-1);
+export const otpArray = writable(['']);
+export const focusedIndex = writable(-1);

@@ -9,7 +9,9 @@
 	import { unified } from 'unified';
 	import { Button } from '../ui/button/index.js';
 	function copyToClipboardWithMeta(value: string) {
-		window && window.isSecureContext && navigator.clipboard.writeText(value);
+		if (window && window.isSecureContext) {
+			navigator.clipboard.writeText(value);
+		}
 	}
 
 	export let code: string;
@@ -26,7 +28,6 @@
 			.use(rehypeStringify)
 			.process(code);
 
-		console.log(String(file));
 		return String(file);
 	}
 	onMount(async () => {
@@ -37,6 +38,7 @@
 </script>
 
 <div class="relative">
+	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html $mode == 'dark' ? innerHTMLDark : innerHTMLLight}
 	<div class="absolute top-4 right-4">
 		<Button variant="ghost" on:click={() => copyToClipboardWithMeta(code)}
