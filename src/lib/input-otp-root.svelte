@@ -49,7 +49,6 @@
 		// Update focusedIndex to the next empty input
 		const nextIndex = otp.length < maxLength! ? otp.length : maxLength! - 1;
 		focusedIndex.set(nextIndex);
-		console.log($focusedIndex);
 
 		// Call the onComplete callback when OTP input is fully filled
 		if (otp.length === maxLength) {
@@ -58,7 +57,7 @@
 	}
 
 	// Function to handle the input events
-	function handleInput(event: any) {
+	function handleInput(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
 		if (disabled) return;
 		const input = (event.target as HTMLInputElement).value;
 		const regex = getPattern();
@@ -79,7 +78,6 @@
 		const pasteData = event.clipboardData?.getData('text') || '';
 		const otp = pasteData.slice(0, maxLength);
 		const regex = getPattern();
-		console.log(regex.test(otp));
 		if (regex.test(otp)) {
 			updateOtpArray(otp);
 		}
@@ -95,10 +93,8 @@
 	// Watch for changes in the value prop from the parent component
 	$: if (value !== $otpArray.join('')) {
 		const regex = new RegExp(getPattern());
-		console.log('value' + value);
 
 		if (regex.test(value!)) {
-			console.log('valued' + value);
 			updateOtpArray(value!);
 		}
 	}
@@ -118,7 +114,7 @@
 		if (disabled) return;
 
 		// Set focusedIndex to the first empty input or to the end of the filled inputs
-		otpArray.update((currentOtpArray: any) => {
+		otpArray.update((currentOtpArray: string[]) => {
 			const nextIndex = currentOtpArray.findIndex((value: string) => value === '');
 			focusedIndex.set(nextIndex === -1 ? maxLength! - 1 : nextIndex);
 			return currentOtpArray;

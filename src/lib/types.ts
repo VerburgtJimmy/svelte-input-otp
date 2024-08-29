@@ -46,10 +46,10 @@ export type rootProps = {
 
 	/**
 	 * The function that is called when the input otp is correctly filled in.
-	 * @param args
+	 * @param code
 	 * @returns
 	 */
-	onComplete?: (...args: any[]) => unknown;
+	onComplete?: (code: string) => unknown;
 
 	/**
 	 * @todo Add this functionality

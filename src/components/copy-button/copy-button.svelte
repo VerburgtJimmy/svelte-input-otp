@@ -6,8 +6,11 @@
 	let code = 'npm install @jimmyverburgt/svelte-input-otp';
 	let copied = false;
 	function copyToClipboardWithMeta(value: string) {
-		window && window.isSecureContext && navigator.clipboard.writeText(value);
-		copied = true;
+		if (window && window.isSecureContext) {
+			navigator.clipboard.writeText(value);
+			copied = true;
+		}
+
 		setTimeout(() => {
 			copied = false;
 		}, 2500);
