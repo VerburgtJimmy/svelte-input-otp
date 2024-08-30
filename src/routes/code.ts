@@ -27,6 +27,8 @@ export const code = `
 	autoFocus={true}
 	onComplete={handleOtpComplete}
 	className="flex items-center gap-2"
+	inputMode="numeric"
+	ariaLabel='Svelte OTP Code'
 > 
 	<div class="flex items-center">
 		<OTPInput

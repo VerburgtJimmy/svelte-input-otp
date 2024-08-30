@@ -55,6 +55,8 @@
 	</div>
 	<div class="my-10">
 		<OTPRoot
+			ariaLabel='Svelte OTP Code'
+			inputMode="numeric"
 			maxLength={6}
 			on:change={handleOtpChange}
 			bind:value
@@ -66,17 +68,17 @@
 			<div class="flex items-center">
 				<OTPInput
 					index={0}
-					className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+					className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 					focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 				/>
 				<OTPInput
 					index={1}
-					className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+					className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 					focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 				/>
 				<OTPInput
 					index={2}
-					className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+					className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 					focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 				/>
 			</div>
@@ -86,17 +88,17 @@
 			<div class="flex items-center">
 				<OTPInput
 					index={3}
-					className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+					className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 					focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 				/>
 				<OTPInput
 					index={4}
-					className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+					className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 					focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 				/>
 				<OTPInput
 					index={5}
-					className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+					className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
 					focusClassName="z-10 ring-2 ring-ring ring-offset-background"
 				/>
 			</div>

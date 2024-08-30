@@ -35,6 +35,8 @@ This is using tailwind css and using the theme system from shadcn/ui
 </script>
 
 <OTPRoot
+	inputMode="numeric"
+	ariaLabel="Svelte OTP Code"
 	bind:this={otpref}
 	maxLength={6}
 	on:change={handleOtpChange}
@@ -127,15 +129,14 @@ export type rootProps = {
 	 *
 	 * @default numeric
 	 */
-	inputType?: 'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url';
+	inputMode?: 'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url';
 
 	/**
-	 *  Where is the text located within the input
-	 *  Affects click-holding or long-press behavior
+	 *  aria-label for the input
 	 *
 	 * @default left
 	 */
-	textAlign?: 'left' | 'center' | 'right';
+	ariaLabel?: string;
 
 	/**
 	 *  Set the regexpattern for allowing only digits, only chars, or both
