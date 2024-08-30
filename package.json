@@ -1,6 +1,6 @@
 {
 	"name": "@jimmyverburgt/svelte-input-otp",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"author": "Jimmy Verburgt <hey@jimmyverburgt.com>",
 	"description": "One time passcode Input for svelte. Accessible & unstyled.",
 	"homepage": "svelte-input-otp.jimmyverburgt.com",
