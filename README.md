@@ -129,14 +129,14 @@ export type rootProps = {
 	 *
 	 * @default numeric
 	 */
-	inputNumeric?: 'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url';
+	inputMode?: 'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url';
 
 	/**
 	 *  aria-label for the input
 	 *
 	 * @default left
 	 */
-	ariaLabel: string;
+	ariaLabel?: string;
 
 	/**
 	 *  Set the regexpattern for allowing only digits, only chars, or both
