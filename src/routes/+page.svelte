@@ -4,7 +4,7 @@
 	import Confetti from 'svelte-confetti';
 	import CodeBlock from '../components/code-block/code-block.svelte';
 	import CopyButton from '../components/copy-button/copy-button.svelte';
-	import Button from '../components/ui/button/button.svelte';
+	import { Button } from '../components/ui/button/index.js';
 	import { code } from './code.js';
 
 	let correct: boolean = false;

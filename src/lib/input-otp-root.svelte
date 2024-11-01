@@ -140,7 +140,7 @@
 		class="invisible-input"
 		bind:this={ref}
 		inputmode={inputMode}
-		autocomplete="one-timecode"
+		autocomplete="one-time-code"
 		{value}
 		on:focus={focusInvisibleInput}
 		on:blur={handleBlur}
