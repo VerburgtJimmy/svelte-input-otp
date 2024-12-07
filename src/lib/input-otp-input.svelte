@@ -1,25 +1,17 @@
 <script lang="ts">
-	import { focusedIndex, otpArray } from './input-otp-store.js';
 	import type { inputProps } from './types.js';
 
 	type $$Props = inputProps;
 
-	export let index: $$Props['index'];
-	export let className: $$Props['className'] = '';
-	export let focusClassName: $$Props['focusClassName'] = '';
+	interface Props {
+		field: $$Props['field'];
+		className?: $$Props['className'];
+		focusClassName?: $$Props['focusClassName'];
+	}
 
-	let value = '';
-	let isFocused = false;
-
-	otpArray.subscribe((array) => {
-		value = array[index] || '';
-	});
-
-	focusedIndex.subscribe((focusIndex) => {
-		isFocused = focusIndex === index;
-	});
+	let { field, className = '', focusClassName = '' }: Props = $props();
 </script>
 
-<div class={`${className} ${isFocused ? focusClassName : ''}`} tabindex="-1">
-	{value}
+<div class={`${className} ${field.isActive ? focusClassName : ''}`} tabindex="-1">
+	{field.char}
 </div>

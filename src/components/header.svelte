@@ -8,6 +8,17 @@
 <header
 	class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
 >
+	<div
+		class="container flex h-10 max-w-screen-2xl items-center justify-center bg-orange-500 text-white"
+	>
+		<p class="bold text-sm text-center">
+			Go to <a
+				class="underline"
+				href="https://svelte-input-otp.jimmyverburgt.com/"
+				aria-label="link to svelte 4 version">svelte-input-otp.jimmyverburgt.com</a
+			> to view the svelte v4 version of this component!
+		</p>
+	</div>
 	<div class="container flex h-14 max-w-screen-2xl items-center">
 		<div class="flex flex-1 items-center justify-between space-x-2 md:justify-end">
 			<nav class="flex items-center">

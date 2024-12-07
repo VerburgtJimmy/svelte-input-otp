@@ -14,9 +14,13 @@
 		}
 	}
 
-	export let code: string;
-	let innerHTMLDark: string = '';
-	let innerHTMLLight: string = '';
+	interface Props {
+		code: string;
+	}
+
+	let { code }: Props = $props();
+	let innerHTMLDark: string = $state('');
+	let innerHTMLLight: string = $state('');
 	async function highlightCode(code: string, dark: boolean) {
 		const file = await unified()
 			.use(remarkParse)
@@ -37,11 +41,11 @@
 	});
 </script>
 
-<div class="relative">
+<div class="relative w-full">
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 	{@html $mode == 'dark' ? innerHTMLDark : innerHTMLLight}
 	<div class="absolute top-4 right-4">
-		<Button variant="ghost" on:click={() => copyToClipboardWithMeta(code)}
+		<Button variant="ghost" onclick={() => copyToClipboardWithMeta(code)}
 			><div>
 				<Copy class="h-4 w-4" />
 				<span class="sr-only">copy</span>
