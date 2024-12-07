@@ -1,23 +1,19 @@
 <script lang="ts">
-	import { type WithElementRef } from 'bits-ui';
-	import type { HTMLAttributes } from 'svelte/elements';
+	import { DropdownMenu as DropdownMenuPrimitive } from 'bits-ui';
 	import { cn } from '../../../utils/utils.js';
 
 	let {
 		ref = $bindable(null),
 		class: className,
 		inset,
-		children,
 		...restProps
-	}: WithElementRef<HTMLAttributes<HTMLDivElement>> & {
+	}: DropdownMenuPrimitive.GroupHeadingProps & {
 		inset?: boolean;
 	} = $props();
 </script>
 
-<div
-	bind:this={ref}
+<DropdownMenuPrimitive.GroupHeading
+	bind:ref
 	class={cn('px-2 py-1.5 text-sm font-semibold', inset && 'pl-8', className)}
 	{...restProps}
->
-	{@render children?.()}
-</div>
+/>
