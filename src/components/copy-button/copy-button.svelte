@@ -3,8 +3,8 @@
 	import Copy from 'lucide-svelte/icons/copy';
 	import { Button } from '../ui/button/index.js';
 
-	let code = 'npm install @jimmyverburgt/svelte-input-otp';
-	let copied = false;
+	let code = 'npm install @jimmyverburgt/svelte-input-otp@next';
+	let copied = $state(false);
 	function copyToClipboardWithMeta(value: string) {
 		if (window && window.isSecureContext) {
 			navigator.clipboard.writeText(value);
@@ -17,7 +17,7 @@
 	}
 </script>
 
-<Button class="mr-2" variant="outline" on:click={() => copyToClipboardWithMeta(code)}>
+<Button class="mr-2" variant="outline" onclick={() => copyToClipboardWithMeta(code)}>
 	{code}
 	{#if copied}
 		<Check class="ml-3 h-3 w-3" />

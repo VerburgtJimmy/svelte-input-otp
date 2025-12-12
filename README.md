@@ -2,10 +2,13 @@
 
 A unstyled & accessible OTP component for svelte
 
+> [!IMPORTANT]  
+> This is still a beta version, so use the package at your own risk in a production environment!
+
 ## Installation
 
 ```bash
-npm install @jimmyverburgt/svelte-input-otp
+npm install @jimmyverburgt/svelte-input-otp@next
 ```
 
 ## Implementation
@@ -18,70 +21,50 @@ This is using tailwind css and using the theme system from shadcn/ui
 	import { OTPInput, OTPRoot } from '@jimmyverburgt/svelte-input-otp';
 	import Minus from 'lucide-svelte/icons/minus';
 
-	let otpref: any;
+	// Set default value if you want to
+	let value = $state('12');
 
-	// Set start value
-	let value = '12';
-
-	function handleOtpComplete(otp: string) {
-		console.log('OTP Complete:', otp);
-		// Reset value
-		value = '';
+	function handleOtpComplete(code: string) {
+		console.log('OTP Complete:', code);
 	}
 
 	function handleOtpChange(event: { detail: string }) {
-		console.log('OTP changed:', value);
+		console.log('OTP changed:', event.detail);
 	}
 </script>
 
 <OTPRoot
-	inputMode="numeric"
-	ariaLabel="Svelte OTP Code"
-	bind:this={otpref}
 	maxLength={6}
+	ariaLabel="Svelte OTP Code"
 	on:change={handleOtpChange}
 	bind:value
 	autoFocus={true}
 	onComplete={handleOtpComplete}
 	className="flex items-center gap-2"
 >
-	<div class="flex items-center">
-		<OTPInput
-			index={0}
-			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
-			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
-		/>
-		<OTPInput
-			index={1}
-			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
-			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
-		/>
-		<OTPInput
-			index={2}
-			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
-			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
-		/>
-	</div>
-	<div class="mx-1">
-		<Minus />
-	</div>
-	<div class="flex items-center">
-		<OTPInput
-			index={3}
-			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
-			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
-		/>
-		<OTPInput
-			index={4}
-			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
-			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
-		/>
-		<OTPInput
-			index={5}
-			className="relative flex h-20 w-16 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
-			focusClassName="z-10 ring-2 ring-ring ring-offset-background"
-		/>
-	</div>
+	{#snippet children({ fields })}
+		<div class="flex items-center">
+			{#each fields.slice(0, 3) as field}
+				<OTPInput
+					{field}
+					className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+					focusClassName="z-10 ring-2 ring-ring ring-offset-background"
+				/>
+			{/each}
+		</div>
+		<div class="mx-1">
+			<Minus />
+		</div>
+		<div class="flex items-center">
+			{#each fields.slice(3, 6) as field}
+				<OTPInput
+					{field}
+					className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
+					focusClassName="z-10 ring-2 ring-ring ring-offset-background"
+				/>
+			{/each}
+		</div>
+	{/snippet}
 </OTPRoot>
 ```
 
@@ -103,47 +86,45 @@ export type rootProps = {
 	 *
 	 * @default otp
 	 */
-	inputName?: string;
+	inputName: string;
 
 	/**
-	 * The max lenght which is set to the hidden input. Make sure this is the same as the number of input slots.
+	 * The max length which is set to the hidden input. Make sure this is the same as the number of input slots.
 	 */
-	maxLength?: number;
+	maxLength: number;
 
 	/**
 	 * Set if the entire input otp component needs to be disabled
 	 *
 	 * @default false
 	 */
-	disabled?: boolean;
+	disabled: boolean;
 
 	/**
 	 * Whether you want to focus the input on mount
 	 *
 	 * @default false
 	 */
-	autoFocus?: boolean;
+	autoFocus: boolean;
+
+	/**
+	 * Holds the children with their data
+	 */
+	children: Snippet<[inputSnippetProps]>;
 
 	/**
 	 * Virtual keyboard appearance on mobile
 	 *
 	 * @default numeric
 	 */
-	inputMode?: 'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url';
-
-	/**
-	 *  aria-label for the input
-	 *
-	 * @default left
-	 */
-	ariaLabel?: string;
+	inputMode: 'numeric' | 'text' | 'decimal' | 'tel' | 'search' | 'email' | 'url';
 
 	/**
 	 *  Set the regexpattern for allowing only digits, only chars, or both
 	 *
 	 * @default digits
 	 */
-	pattern?: 'digits' | 'chars' | 'digitsAndChars';
+	pattern: 'digits' | 'chars' | 'digitsAndChars';
 
 	/**
 	 * The function that is called when the input otp is correctly filled in.
@@ -161,6 +142,11 @@ export type rootProps = {
 	 * Insert your classes for the component here.
 	 */
 	className?: string;
+
+	/**
+	 * Add support for screen reader to this control
+	 */
+	ariaLabel?: string;
 };
 ```
 
@@ -171,9 +157,12 @@ The input container. Define settings for the individual inputs via props.
 ```ts
 export type inputProps = {
 	/**
-	 * Indicates the index of the input slot
+	 * Holds the values for the individual input fields
 	 */
-	index: number;
+	field: {
+		char: string | null;
+		isActive: boolean;
+	};
 
 	/**
 	 * Insert your classes for the component here.
@@ -184,6 +173,19 @@ export type inputProps = {
 	 * Insert your classes for the component here when the component is focussed.
 	 */
 	focusClassName?: string;
+};
+```
+
+### Snippet
+
+The snippet data.
+
+```ts
+export type inputSnippetProps = {
+	/**
+	 * Holds all the fields and their data
+	 */
+	fields: inputProps['field'][];
 };
 ```
 

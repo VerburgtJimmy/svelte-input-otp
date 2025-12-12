@@ -14,9 +14,9 @@
 		<p class="bold text-sm text-center">
 			Go to <a
 				class="underline"
-				href="https://next-svelte-input-otp.jimmyverburgt.com/"
-				aria-label="link to svelte 4 version">next-svelte-input-otp.jimmyverburgt.com</a
-			> to view the svelte v5 beta version of this component!
+				href="https://svelte-input-otp.jimmyverburgt.com/"
+				aria-label="link to svelte 4 version">svelte-input-otp.jimmyverburgt.com</a
+			> to view the svelte v4 version of this component!
 		</p>
 	</div>
 	<div class="container flex h-14 max-w-screen-2xl items-center">
