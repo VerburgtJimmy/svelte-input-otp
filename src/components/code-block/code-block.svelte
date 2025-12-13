@@ -43,7 +43,7 @@
 
 <div class="relative w-full">
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-	{@html $mode == 'dark' ? innerHTMLDark : innerHTMLLight}
+	{@html mode.current == 'dark' ? innerHTMLDark : innerHTMLLight}
 	<div class="absolute top-4 right-4">
 		<Button variant="ghost" onclick={() => copyToClipboardWithMeta(code)}
 			><div>

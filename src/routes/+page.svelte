@@ -46,7 +46,7 @@
 		/>
 	</div>
 {/if}
-<div class="container relative flex flex-col justify-center items-center">
+<div class="container px-8 mx-auto relative flex flex-col justify-center items-center">
 	<div class="mx-auto max-w-2xl pt-64 text-center">
 		<div class="relative flex flex-col">
 			<h1 class="relative mb-4 text-7xl font-semibold">Svelte-Input-Otp</h1>
@@ -64,7 +64,7 @@
 		>
 			{#snippet children({ fields })}
 				<div class="flex items-center">
-					{#each fields.slice(0, 3) as field}
+					{#each fields.slice(0, 3) as field, index (index)}
 						<OTPInput
 							{field}
 							className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"
@@ -77,7 +77,7 @@
 					<Minus />
 				</div>
 				<div class="flex items-center">
-					{#each fields.slice(3, 6) as field}
+					{#each fields.slice(3, 6) as field, index (index)}
 						<OTPInput
 							{field}
 							className="relative flex w-10 md:w-16 h-14 md:h-20 items-center justify-center border-y border-r border-input text-3xl transition-all first:rounded-l-md first:border-l last:rounded-r-md"

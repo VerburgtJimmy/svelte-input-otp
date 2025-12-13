@@ -11,3 +11,10 @@ declare global {
 }
 
 export {};
+
+import type { ClassValue as ClsxClassValue } from 'clsx';
+
+declare module 'tailwind-merge' {
+	// Make ClassNameValue compatible with clsx's ClassValue
+	export type ClassNameValue = ClsxClassValue;
+}
