@@ -5,6 +5,10 @@
 	"description": "One time passcode Input for svelte. Accessible & unstyled.",
 	"homepage": "svelte-input-otp.jimmyverburgt.com",
 	"license": "MIT",
+	"publishConfig": {
+		"access": "public",
+		"provenance": true
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/VerburgtJimmy/svelte-input-otp.git"
