@@ -26,4 +26,4 @@ jobs:
       - run: npm ci
       - run: npm run package
 
-      - run: npm publish
+      - run: npm publish --access public
